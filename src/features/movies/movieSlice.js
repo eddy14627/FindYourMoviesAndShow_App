@@ -4,11 +4,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchAsyncMovies = createAsyncThunk(
   "movies/fetchAsyncMovies",
-  async () => {
-    const Search = "Harry";
+  async (term) => {
     try {
       const { data } = await moviesApi.get(
-        `?apikey=${ApiKey}&s=${Search}&type=movie`
+        `?apikey=${ApiKey}&s=${term}&type=movie`
       );
       return data;
     } catch (error) {
@@ -19,11 +18,10 @@ export const fetchAsyncMovies = createAsyncThunk(
 
 export const fetchAsyncShows = createAsyncThunk(
   "movies/fetchAsyncShows",
-  async () => {
-    const Search = "Friends";
+  async (term) => {
     try {
       const { data } = await moviesApi.get(
-        `?apikey=${ApiKey}&s=${Search}&type=series`
+        `?apikey=${ApiKey}&s=${term}&type=series`
       );
       return data;
     } catch (error) {
